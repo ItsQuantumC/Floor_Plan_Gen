@@ -7,7 +7,7 @@ We experiment with three different types of Generative Adversarial Networks (GAN
 - ✍️ **Pix2Pix** (Conditional GAN for Image-to-Image Translation)
 - 🧠 **SAGAN** (Self-Attention GAN for capturing long-range dependencies)
 
-Each model is trained and evaluated on rasterized floorplan datasets (primarily **CubiCasa5K** and publicly sourced floorplan images).  
+Each model is trained and evaluated on rasterized floorplan datasets (primarily **CubiCasa5K** and **ROBIN**).  
 Different preprocessing techniques were employed depending on the model architecture, ranging from **noise vector generation** to **edge map conditioning** and **attention-based feature extraction**.
 
 ---
@@ -17,7 +17,6 @@ Different preprocessing techniques were employed depending on the model architec
 - Training **DCGAN** to synthesize floorplans purely from random noise vectors.
 - Training **Pix2Pix** using edge maps to translate to realistic floorplans.
 - Training **SAGAN** with self-attention layers to capture global spatial coherence.
-- Evaluating the generated outputs based on **visual fidelity** and **structural realism**.
 - Computing evaluation metrics such as **Structural Similarity Index (SSIM)** and **Peak Signal-to-Noise Ratio (PSNR)** for Pix2Pix outputs.
 
 ---
