@@ -1,4 +1,3 @@
-# Floor_Plan_Generation using Deep Neural Networks
 # 🏠 Floor Plan Generation using Deep Generative Models
 
 This project explores the use of **deep generative models** for the task of **automated architectural floorplan generation**.  
