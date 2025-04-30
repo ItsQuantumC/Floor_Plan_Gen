@@ -9,6 +9,10 @@ class PatchDiscriminator(nn.Module):
             if norm: layers.append(nn.BatchNorm2d(out_c))
             layers.append(nn.LeakyReLU(0.2))
             return layers
+        
+        """ * operator unpacks the list into arguments 
+        so that nn.sequential() receives individual arguments rather than
+        a nested list of arguments  """
 
         self.model = nn.Sequential(
             *conv_block(in_channels * 2, 64, norm=False),

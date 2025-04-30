@@ -31,10 +31,9 @@ def main():
     metrics = calculate_metrics(
         input1=args.gen_folder,
         input2=args.real_folder,
-        cuda=use_cuda,   # <— will be False on CPU-only installs
+        cuda=use_cuda,   # use GPU if available
         isc=True,        # compute Inception Score
         fid=True,        # compute FID
-        kid=False
     )
 
     print(f"Inception Score       : {metrics['inception_score_mean']:.4f} ± {metrics['inception_score_std']:.4f}")

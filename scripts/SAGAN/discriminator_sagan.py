@@ -2,6 +2,10 @@ import torch
 import torch.nn as nn
 from self_attention import SelfAttention
 
+# Spectral Normalization can be used in the discriminator
+""" More about Spectral Normalization was understood from: 
+        https://blog.ml.cmu.edu/2022/01/21/why-spectral-normalization-stabilizes-gans-analysis-and-improvements/
+          """
 class Discriminator(nn.Module):
     def __init__(self, img_channels=3, fmap=64):
         super().__init__()
@@ -30,4 +34,4 @@ class Discriminator(nn.Module):
 
     def forward(self, img):
         out = self.model(img)
-        return out.view(out.size(0), -1)
+        return out.view(out.size(0), -1) # flatten the output

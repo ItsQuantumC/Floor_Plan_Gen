@@ -31,6 +31,13 @@ def main():
     G = Generator(z_dim=z_dim).to(device)
     D = Discriminator().to(device)
     criterion = nn.BCEWithLogitsLoss()
+    # values of beta1 and beta2 can be adapted and experimented with, as mentioned in the paper 
+    """For all models,
+    we use the Adam optimizer (Kingma & Ba, 2015) with
+    β1 = 0 and β2 = 0.9 for training. By default, the learning
+    rate for the discriminator is 0.0004 and the learning rate for
+    the generator is 0.0001 - prescribed by authors of SAGAN. 
+    """
     opt_G     = optim.Adam(G.parameters(), lr=1e-4, betas=(0.5,0.999))
     opt_D     = optim.Adam(D.parameters(), lr=1e-4, betas=(0.5,0.999))
     fixed_noise = torch.randn(16, z_dim, device=device)

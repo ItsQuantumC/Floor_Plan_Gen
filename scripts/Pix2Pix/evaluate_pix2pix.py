@@ -13,6 +13,7 @@ def load_image(path, size):
         transforms.Resize((size, size)),
         transforms.ToTensor()
     ])
+    
     arr = tf(img).numpy().transpose(1,2,0)
     # back to [0..255] uint8 for SSIM/PSNR
     return (arr * 255).astype(np.uint8)
@@ -24,7 +25,7 @@ def main():
     default_real_pref  = "real_"
     default_fake_pref  = "fake_"
     default_size       = 64
-    default_win_size   = 3   # must be odd and <= smallest image dim
+    default_win_size   = 3   # must be odd and <= smallest image dim \\\SSIM issue
 
     p = argparse.ArgumentParser(
         description="Evaluate Pix2Pix (paired) with SSIM & PSNR"
@@ -61,8 +62,10 @@ def main():
         # load only real vs fake
         im_real = load_image(real, args.size)
         im_fake = load_image(fake, args.size)
+        """ Had encountered problems here computing SSIM...
 
-        # compute SSIM with explicit window and channel_axis
+        compute SSIM with explicit window and channel_axis 
+        """
         s = ssim(
             im_real,
             im_fake,

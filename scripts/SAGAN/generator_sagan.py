@@ -8,6 +8,11 @@ class Generator(nn.Module):
         self.init_size = 8  # 8×8 start
         self.l1 = nn.Linear(z_dim, fmap*8*self.init_size*self.init_size)
 
+        # Spectral Normalization can be used in the generator
+        """ More about Spectral Normalization was understood from: 
+        https://blog.ml.cmu.edu/2022/01/21/why-spectral-normalization-stabilizes-gans-analysis-and-improvements/
+          """
+
         self.conv_blocks = nn.Sequential(
             nn.BatchNorm2d(fmap*8),
             # 8×8 → 16×16

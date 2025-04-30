@@ -11,7 +11,7 @@ class UNetBlock(nn.Module):
             nn.BatchNorm2d(out_ch),
             nn.ReLU(inplace=True) if act == 'relu' else nn.LeakyReLU(0.2)
         )
-        self.drop = nn.Dropout(0.5) if dropout else nn.Identity()
+        self.drop = nn.Dropout(0.5) if dropout else nn.Identity() # this is for the skip connections
 
     def forward(self, x):
         return self.drop(self.block(x))

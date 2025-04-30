@@ -7,8 +7,8 @@ from torch.utils.data import DataLoader
 from torchvision.utils import save_image
 from PIL import Image
 
-from models.generator import UNetGenerator
-from models.discriminator import PatchDiscriminator
+from generator import UNetGenerator
+from discriminator import PatchDiscriminator
 from dataset import FloorPlanDataset  # same dataset as before
 
 # ---- CONFIG ----
